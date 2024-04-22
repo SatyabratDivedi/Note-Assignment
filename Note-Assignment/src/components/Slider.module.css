@@ -1,0 +1,58 @@
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100vh;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 10px 0px 30px -10px rgba(71, 70, 70, 0.75);
+  -webkit-box-shadow: 10px 0px 30px -10px rgba(111, 107, 107, 0.75);
+  -moz-box-shadow: 10px 0px 30px -10px rgba(107, 104, 104, 0.75);
+}
+.noteHeader {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 3rem;
+  font-style: normal;
+  margin-top: 50px;
+}
+.nameArea {
+  width: 100%;
+  padding-left: 30px;
+}
+.groupSortName {
+  font-size: 1.7rem;
+  color: #dae5f5;
+  display: grid;
+  place-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.groupName {
+  font-size: 2rem;
+}
+.addNots {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 7rem;
+  padding: 42px;
+  color: #dae5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition-duration: 500ms;
+}
+.addNots:hover{
+  scale: 1.07;
+  transform: rotate(90deg);
+}

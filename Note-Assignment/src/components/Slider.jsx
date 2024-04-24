@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Slider.module.css';
 import { NavLink } from 'react-router-dom';
 
 function Slider({ setOperWraper }) {
+
   const addNoteHandler = (e) => {
     e.stopPropagation();
     setOperWraper(true);
   };
+
+
   const getDataFromLocalStorage = JSON.parse(localStorage.getItem('data'));
+  console.log(getDataFromLocalStorage)
+
   return (
     <>
       <div className={style.slider}>

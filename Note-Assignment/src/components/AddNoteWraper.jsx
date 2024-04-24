@@ -6,7 +6,10 @@ function AddNoteWraper({ setOperWraper }) {
   const [edit, setEdit] = useState({ groupName: '', color: '' });
 
   const changeHandler = (e) => {
-    setEdit((prevEdit) => ({ ...prevEdit, groupName: e.target.value }));
+    setEdit({
+      ...edit,
+      groupName: e.target.value
+    });
   };
 
   const colorclkHandler = (color) => {
@@ -21,14 +24,22 @@ function AddNoteWraper({ setOperWraper }) {
     const newData = [...existingData, edit];
     localStorage.setItem('data', JSON.stringify(newData));
     setOperWraper(false);
+    window.location.reload(true);
   };
 
   useEffect(() => {
-    const windowClickHandler = (e) => {
+  const windowClickHandler = (e) => {
+    if (e.target.className !== style.mainBox) {
       setOperWraper(false);
-    };
-    window.addEventListener('click', windowClickHandler);
-  }, []);
+    }
+  };
+  window.addEventListener('click', windowClickHandler);
+
+  return () => {
+    window.removeEventListener('click', windowClickHandler);
+  };
+}, []);
+
 
   const inClickHandler = (e) => {
     e.stopPropagation();

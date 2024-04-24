@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './NoteTextArea.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GoDotFill } from 'react-icons/go';
@@ -8,8 +8,7 @@ import { MdDelete } from 'react-icons/md';
 function NoteTextArea() {
   const params = useParams();
   const navigate = useNavigate();
-  const getDataFromLocalStorage = JSON.parse(localStorage.getItem('data')) || [];
-  const mainItem = getDataFromLocalStorage.filter((item) => item.groupName === params.groupName) || [];
+  const getDataFromLocalStorage = JSON.parse(localStorage.getItem('data') || '[]');
   const [edit, setEdit] = useState('');
   const [data, setData] = useState(getDataFromLocalStorage || []);
   const editChangeHandler = (e) => {
@@ -17,43 +16,24 @@ function NoteTextArea() {
   };
 
   const saveClickHandler = () => {
-    // Map over the data from local storage
     const updatedData = data.map((item) => {
-      // If the groupName of the current item matches params.groupName...
       if (item.groupName === params.groupName) {
-        // Ensure item.notes is an array before trying to spread it
         const notes = Array.isArray(item.notes) ? item.notes : [];
-
-        // Return a new object that has all the properties of the current item,
-        // but with the notes array updated to include the edit value
         return { ...item, notes: [...notes, { note: edit, date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString() }] };
       }
-
-      // If the groupName doesn't match, return the item as is
       return item;
     });
 
-      // If no item with a matching groupName was found, add a new item with an empty notes array
-  if (!updatedData.find(item => item.groupName === params.groupName)) {
-    updatedData.push({ groupName: params.groupName, notes: [] });
-  }
-
-    // Save the updated data back to local storage
     localStorage.setItem('data', JSON.stringify(updatedData));
-
-    // Update the state
     setData(updatedData);
-
-    // Clear the edit state
     setEdit('');
   };
 
-  // In your render method:
-const currentItem = data.find(item => item.groupName === params.groupName);
+  const currentItem = data.find((item) => item.groupName === params.groupName) || [];
 
   const oneDataDelete = (index) => () => {
     const updatedData = data.map((item) => {
-      if (item?.groupName === params.groupName) {
+      if (item.groupName === params.groupName) {
         const notes = Array.isArray(item.notes) ? item.notes : [];
         notes.splice(index, 1);
         return { ...item, notes: notes };
@@ -66,29 +46,27 @@ const currentItem = data.find(item => item.groupName === params.groupName);
 
   const groupDelete = (groupName) => () => {
     const updatedData = data?.filter((item) => item.groupName !== groupName);
-    localStorage.setItem('data', JSON.stringify(updatedData));
     setData(updatedData);
-    navigate('/')
-
+    localStorage.setItem('data', JSON.stringify(updatedData));
+    navigate('/');
+    window.location.reload(true);
   };
 
   return (
     <>
       <div className={style.textAreaContainer}>
-        {/* header */}
         <div className={style.headerArea}>
-          <div className={style.groupSortName} style={{ background: `${data[0]?.color}` }}>
+          <div className={style.groupSortName} style={{ background: `${currentItem?.color}` }}>
             {currentItem?.groupName
               .split(' ')
               .map((word) => word[0].toUpperCase())
               .join('')}
           </div>
-          <div className={style.groupName}>{currentItem?.groupName}</div>
-          <span onClick={groupDelete(data[0]?.groupName)} className={style.headerDeleteBotton} style={{ transform: 'translateY(1px)' }}>
+          <div className={style.groupName}>{currentItem.groupName}</div>
+          <span onClick={groupDelete(currentItem?.groupName)} className={style.headerDeleteBotton} style={{ transform: 'translateY(1px)' }}>
             <MdDelete />
           </span>
         </div>
-        {/* text area */}
         <div className={style.textStoreArea}>
           {currentItem.notes?.map((item, i) => (
             <div key={i} className={style.textStoreAreaBox}>
@@ -108,7 +86,6 @@ const currentItem = data.find(item => item.groupName === params.groupName);
             </div>
           ))}
         </div>
-        {/* footer Area */}
 
         <div className={style.footerArea}>
           <input onChange={editChangeHandler} type="text" name="edit" value={edit} id="" placeholder="Enter your text here......" />

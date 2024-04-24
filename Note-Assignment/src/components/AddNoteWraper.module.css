@@ -1,4 +1,44 @@
-.addNoteWraper{
-    background-color: white;
-    border-radius: 5px;
+.addNoteWraper {
+  background-color: white;
+  border-radius: 15px;
+  width: 34%;
+}
+.mainBox {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 30px;
+}
+.groupInp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  gap: 10px;
+}
+.groupInp input {
+  width: 70%;
+  padding: 10px;
+  font-size: 2rem;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.colorBox {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 60px;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+.colorCircle {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  gap: 5px;
+  justify-content: space-between;
+  margin: 10px 0;
+  cursor: pointer;
 }

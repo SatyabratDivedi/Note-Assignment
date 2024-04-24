@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div style={{ position: "relative" }} className="frontAddPage">
-        <div className="backgroundPage">
+        <div className="">
           <Slider setOperWraper={setOperWraper} />
           <div className=" notesArea">
             <NoteArea />

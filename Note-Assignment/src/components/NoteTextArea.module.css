@@ -1,0 +1,28 @@
+.textAreaContainer {
+  width: 75%;
+  height: 100vh;
+  background: #dae5f5;
+}
+.headerArea{
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 20px;
+    padding-block: 10px;
+    transition-duration: 300ms;
+    background-color: blue;
+    
+}
+.groupSortName {
+  font-size: 2rem;
+  color: #dae5f5;
+  display: grid;
+  place-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-left: 30px;
+}
+.groupName {
+  font-size: 2rem;
+}

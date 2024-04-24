@@ -7,7 +7,7 @@ function AddNoteWraper({ setOperWraper, operWraper }) {
 window.addEventListener('click', (e)=>{
   setOperWraper(false);
 })
-
+  
   const inClickHandler = (e) => {
     setOperWraper(true);
     e.stopPropagation();

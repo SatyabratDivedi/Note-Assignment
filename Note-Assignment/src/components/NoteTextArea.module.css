@@ -2,16 +2,20 @@
   width: 75%;
   height: 100vh;
   background: #dae5f5;
+  position: relative;
 }
-.headerArea{
-    display: flex;
-    align-items: center;
-    color: white;
-    gap: 20px;
-    padding-block: 10px;
-    transition-duration: 300ms;
-    background-color: blue;
-    
+.headerArea {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 20px;
+  padding-block: 10px;
+  transition-duration: 300ms;
+  background-color: blue;
 }
 .groupSortName {
   font-size: 2rem;
@@ -25,4 +29,44 @@
 }
 .groupName {
   font-size: 2rem;
+}
+.textStoreArea {
+    margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  overflow-y: scroll;
+}
+.textStoreAreaBox {
+  background-color: white;
+  padding: 30px 20px 50px 20px;
+  font-size: 1.4rem;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0px 6px 7px 0 rgba(0, 0, 0, 0.1);
+}
+.dateArea {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+.footerArea {
+  width: 100%;
+  height: 20vh;
+  background-color: blue;
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+}
+.footerArea input {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  padding: 10px;
+  border: none;
+  outline: none;
 }

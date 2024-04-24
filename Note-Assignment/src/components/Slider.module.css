@@ -1,5 +1,5 @@
 .slider {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 25%;
@@ -12,7 +12,7 @@
   -webkit-box-shadow: 10px 0px 30px -10px rgba(111, 107, 107, 0.75);
 }
 .noteHeader {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 3rem;
   font-style: normal;
@@ -22,7 +22,7 @@
   width: 100%;
 }
 
-.nameBox{
+.nameBox {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -32,7 +32,7 @@
   transition-duration: 300ms;
   border-radius: 10px;
 }
-.nameBox:hover{
+.nameBox:hover {
   scale: 1.04;
 }
 .groupSortName {
@@ -64,10 +64,10 @@
   cursor: pointer;
   transition-duration: 500ms;
 }
-.addNots:hover{
+.addNots:hover {
   scale: 1.07;
   transform: rotate(90deg);
 }
-.active{
+.active {
   background: rgb(163, 163, 163);
 }

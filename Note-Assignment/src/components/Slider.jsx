@@ -14,11 +14,7 @@ function Slider({ setOperWraper }) {
         <div className={style.noteHeader}>Pocket Notes</div>
         <div className={style.nameArea}>
           {getDataFromLocalStorage?.map((item, index) => (
-            <NavLink
-              to={`${item.groupName}`}
-              key={index}
-              className={({isActive}) => `${((isActive)) && style.active} ${style.nameBox}`}
-            >
+            <NavLink to={`${item.groupName}`} key={index} className={({ isActive }) => `${isActive && style.active} ${style.nameBox}`}>
               <div className={style.groupSortName} style={{ background: `${item.color}` }}>
                 {item.groupName
                   .split(' ')
@@ -29,9 +25,9 @@ function Slider({ setOperWraper }) {
             </NavLink>
           ))}
         </div>
-        <div onClick={addNoteHandler} style={{ background: '#16008B' }} className={style.addNots}>
-          +
-        </div>
+      </div>
+      <div onClick={addNoteHandler} style={{ background: '#16008B' }} className={style.addNots}>
+        +
       </div>
     </>
   );

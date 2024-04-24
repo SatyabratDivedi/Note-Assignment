@@ -7,7 +7,6 @@ import NoteTextArea from './NoteTextArea';
 
 function NoteArea() {
   const match = useMatch('/');
-  console.log(match);
   return (
     <>
       {match ? (

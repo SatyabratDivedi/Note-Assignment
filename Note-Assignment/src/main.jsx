@@ -7,6 +7,9 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NoteTextArea from './components/NoteTextArea.jsx';
 
+import { store } from './reduxStore/store';
+import { Provider } from 'react-redux';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
 );

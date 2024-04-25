@@ -4,8 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { GoDotFill } from 'react-icons/go';
 import { IoSend } from 'react-icons/io5';
 import { MdDelete } from 'react-icons/md';
+import { FaBars } from 'react-icons/fa6';
+import { useDispatch } from 'react-redux';
+import { openHandler } from '../reduxStore/slice';
 
 function NoteTextArea() {
+  const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
   const getDataFromLocalStorage = JSON.parse(localStorage.getItem('data') || '[]');
@@ -28,7 +32,6 @@ function NoteTextArea() {
     setData(updatedData);
     setEdit('');
   };
-
   const currentItem = data.find((item) => item.groupName === params.groupName) || [];
 
   const oneDataDelete = (index) => () => {
@@ -56,6 +59,9 @@ function NoteTextArea() {
     <>
       <div className={style.textAreaContainer}>
         <div className={style.headerArea}>
+          <div onClick={()=> dispatch(openHandler(true))} className={style.barBTN}>
+            <FaBars />
+          </div>
           <div className={style.groupSortName} style={{ background: `${currentItem?.color}` }}>
             {currentItem?.groupName
               .split(' ')

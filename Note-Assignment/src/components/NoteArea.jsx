@@ -4,13 +4,21 @@ import style from './NoteArea.module.css';
 import { IoMdLock } from 'react-icons/io';
 import { useMatch } from 'react-router-dom';
 import NoteTextArea from './NoteTextArea';
+import { FaBars } from 'react-icons/fa6';
+import { useDispatch } from 'react-redux';
+import { openHandler } from '../reduxStore/slice';
 
 function NoteArea() {
+  const dispatch = useDispatch();
   const match = useMatch('/');
   return (
     <>
       {match ? (
+        
         <div className={style.noteAreaMain}>
+          <div onClick={()=> dispatch(openHandler(true))} className={style.barBTN}>
+        <FaBars />
+      </div>
           <div className={style.noNote}>
             <div className={style.imgArea}>
               <img style={{ width: '100%' }} src={img} alt="Image" />

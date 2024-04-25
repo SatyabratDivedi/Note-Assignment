@@ -7,15 +7,15 @@ function App() {
   const [operWraper, setOperWraper] = useState(false);
   return (
     <>
-      <div style={{ position: "relative" }} className="frontAddPage">
-        <div className="">
+      <div style={{ position: "relative" }}>
+        <div>
           <Slider setOperWraper={setOperWraper} />
           <div className=" notesArea">
             <NoteArea />
           </div>
         </div>
         {operWraper && (
-          <div className="addNoteWraper">
+          <div className="addNoteWraperMain">
             <AddNoteWraper operWraper={operWraper} setOperWraper={setOperWraper} />
           </div>
         )}

@@ -56,11 +56,13 @@ function AddNoteWraper({ setOperWraper }) {
           </label>
           <div className={style.colorBox}>
             <div>Choose Color</div>
+            <div className={style.colorBox}>
             {colors.map((color, index) => (
               <div key={index}>
                 <div onClick={() => colorclkHandler(color.color)} style={{ background: color.color }} className={style.colorCircle}></div>
               </div>
             ))}
+            </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'end' }}>
             <button

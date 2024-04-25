@@ -11,10 +11,15 @@
     width: 100% !important;
   }
 }
+@media screen and (min-width: 800px) {
+  .barBTN{
+   display: none;
+  }
+}
 .barBTN {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 10px;
   font-size: 3rem;
   cursor: pointer;
   margin-left: 15px;

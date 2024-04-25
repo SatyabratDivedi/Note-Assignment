@@ -16,6 +16,10 @@ function Slider({ setOperWraper }) {
   const crossClick = () => {
     dispatch(openHandler(false));
   };
+  
+  if (window.innerWidth >= 800) {
+    dispatch(openHandler(true));
+  }
 
   const getDataFromLocalStorage = JSON.parse(localStorage.getItem('data'));
 

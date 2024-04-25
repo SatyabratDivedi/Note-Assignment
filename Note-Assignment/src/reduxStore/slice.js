@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const openSlice = createSlice({
     name: 'isOpen',
     initialState: {
-        isOpen:true,
+        isOpen:false,
     },
     reducers: {
         openHandler: (state, action) => {

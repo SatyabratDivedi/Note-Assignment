@@ -16,7 +16,8 @@
 .crossBTN {
   font-size: 3rem;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
+  z-index: 1000;
   top: 15px;
   right: 30px;
 }
@@ -40,17 +41,32 @@
     width: 100%;
     z-index: 101;
   }
+  .noteHeaderMain {
+    width:95% !important;
+  }
 }
 
-.noteHeader {
-  font-family: 'Roboto', sans-serif;
+.noteHeaderMain {
+  width: 25%;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 3rem;
   font-style: normal;
-  margin-block: 50px;
+  text-align: center;
+  padding-block: 20px;
+  background-color: #f1f1f1;
+  position: fixed;
+  z-index: 2;
+}
+.noteHeader{
+  text-decoration: none;
+  color: black;
 }
 .nameArea {
   width: 100%;
+  margin-top: 30%;
+  padding-inline: 20px;
+  z-index: 1;
 }
 
 .nameBox {
@@ -64,22 +80,22 @@
   border-radius: 10px;
 }
 .nameBox:hover {
-  scale: 1.04;
+  transform: scale(1.04);
 }
 .groupSortName {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #dae5f5;
   display: grid;
   place-items: center;
-  height: 60px;
-  width: 60px;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
   margin-left: 30px;
 }
 .groupName {
   font-size: 2rem;
 }
-.addGroupName{
+.addGroupName {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +105,7 @@
   width: 70px;
   border-radius: 50%;
   padding: 10px;
-  background-color: #16008B ;
+  background-color: #16008b;
   color: #dae5f5;
   position: fixed;
   bottom: 20px;
@@ -99,6 +115,5 @@
   transition-duration: 500ms;
 }
 .addNots:hover {
-  scale: 1.07;
-  transform: rotate(90deg);
+  transform: scale(1.07) rotate(90deg);
 }

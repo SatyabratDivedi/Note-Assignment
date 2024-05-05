@@ -2,7 +2,6 @@
   width: 75%;
   min-height: 100vh;
   background: #dae5f5;
-  position: relative;
 }
 .barBTN{
   font-size: 2.5rem;
@@ -23,6 +22,9 @@
     width: 100% !important;
   }
   .footerArea {
+    width: 100% !important;
+  }
+  .textStoreArea {
     width: 100% !important;
   }
 }
@@ -61,13 +63,16 @@
 }
 .textStoreArea {
   margin-top: 100px;
-  width: 100%;
-  height: fit-content;
+  width: 75%;
+  height: 700px;
+  position: fixed;
+  overflow-y: scroll
+}
+.textStoreAreaBoxMain{
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  overflow-y: scroll;
   padding-bottom: 23vh;
 }
 .textStoreAreaBox {
@@ -79,6 +84,7 @@
   box-shadow: 0px 6px 7px 0 rgba(0, 0, 0, 0.1);
 }
 .dateArea {
+  overflow-y: scroll;
   position: absolute;
   bottom: 0;
   right: 0;

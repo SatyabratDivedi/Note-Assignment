@@ -9,7 +9,6 @@ import NoteTextArea from './components/NoteTextArea.jsx';
 
 import { store } from './reduxStore/store';
 import { Provider } from 'react-redux';
-
 const router = createBrowserRouter([
   {
     path: '/',

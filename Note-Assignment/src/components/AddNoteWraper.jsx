@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import style from './AddNoteWraper.module.css';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addData } from '../reduxStore/dataSlice';
 const colors = [{ color: '#b38bfa' }, { color: '#ff79f2' }, { color: '#43e6fc' }, { color: '#f19576' }, { color: '#0047ff' }, { color: '#6691ff' }];
 
 function AddNoteWraper({ setOperWraper }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [edit, setEdit] = useState({ groupName: '', color: '' });
+ 
+  const recieveDataSlice = useSelector((state) => state.data.data);
+  console.log('recieveDataSlice: ', recieveDataSlice);
 
   const changeHandler = (e) => {
     setEdit({
@@ -16,23 +24,29 @@ function AddNoteWraper({ setOperWraper }) {
     setEdit((prevEdit) => ({ ...prevEdit, color: color }));
   };
 
-  const createHandler = (e) => {
+  const createHandler = () => {
     if (edit.groupName === '' || edit.color === '') {
       return alert('Please fill the group name and color');
     }
     const existingData = JSON.parse(localStorage.getItem('data')) || [];
     const newData = [...existingData, edit];
     localStorage.setItem('data', JSON.stringify(newData));
-    setOperWraper(false);
-    window.location.reload(true);
-  };
 
-  useEffect(() => {
-  const windowClickHandler = (e) => {
-    if (e.target.className !== style.mainBox) {
-      setOperWraper(false);
-    }
+    const reciveData = JSON.parse(localStorage.getItem('data')) || [];
+    console.log(reciveData);
+    dispatch(addData(reciveData));
+    
+    setOperWraper(false);
+    navigate('/');
   };
+  
+  useEffect(() => {
+    const windowClickHandler = (e) => {
+      if (e.target.className !== style.mainBox) {
+        setOperWraper(false);
+      }
+    };
+   
   window.addEventListener('click', windowClickHandler);
 
   return () => {

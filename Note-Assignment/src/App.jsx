@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Slider from "./components/Slider";
-import NoteArea from "./components/NoteArea";
 import AddNoteWraper from "./components/AddNoteWraper";
+import {Outlet} from "react-router-dom";
 
 function App() {
   const [operWraper, setOperWraper] = useState(false);
   return (
     <>
-      <div style={{ position: "relative" }}>
+      <div>
         <div>
           <Slider setOperWraper={setOperWraper} />
           <div className=" notesArea">
-            <NoteArea />
+            <Outlet />
           </div>
         </div>
         {operWraper && (

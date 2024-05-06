@@ -1,7 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 const Errorpage = () => {
+  const {groupName} = useParams();
   return (
     <>
       <section className="page_404 font-DM text-2xl">
@@ -14,15 +15,13 @@ const Errorpage = () => {
                     404
                   </h1>
                 </div>
-
                 <div className="contant_box_404" style={{background: "white", color: "black"}}>
                   <h3 className="h2" style={{background: "white", color: "black"}}>
                     Look like you're lost
                   </h3>
 
                   <p className=" flex justify-center items-center" style={{background: "white", color: "black"}}>
-                    {" "}
-                    <span className=" text-[#148A08] bg-transparent text-3xl"></span> - this page you are looking for not avaible!
+                    <span className=" text-[#148A08] bg-transparent text-3xl"> {groupName} </span> - this groupe name you are looking for not avaible!
                   </p>
 
                   <Link to={"/"} className="link_404">

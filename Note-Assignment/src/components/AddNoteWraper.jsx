@@ -11,7 +11,6 @@ function AddNoteWraper({ setOperWraper }) {
   const [edit, setEdit] = useState({ groupName: '', color: '' });
  
   const recieveDataSlice = useSelector((state) => state.data.data);
-  console.log('recieveDataSlice: ', recieveDataSlice);
 
   const changeHandler = (e) => {
     setEdit({

@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import style from "./NoteTextArea.module.css";
 import {useNavigate, useParams} from "react-router-dom";
 import {GoDotFill} from "react-icons/go";
@@ -7,11 +7,13 @@ import {MdDelete} from "react-icons/md";
 import {FaBars} from "react-icons/fa6";
 import {useDispatch} from "react-redux";
 import {openHandler} from "../reduxStore/slice";
-import { addData } from "../reduxStore/dataSlice";
+import {addData} from "../reduxStore/dataSlice";
+import Errorpage from "./ErrorPage.jsx";
 
 function NoteTextArea() {
   const dispatch = useDispatch();
   const params = useParams();
+
   const navigate = useNavigate();
   const getDataFromLocalStorage = JSON.parse(localStorage.getItem("data") || "[]");
   const [edit, setEdit] = useState("");
@@ -35,6 +37,8 @@ function NoteTextArea() {
   };
 
   const currentItem = data.find((item) => item.groupName === params.groupName) || [];
+  console.log("currentItem: ", currentItem.groupName);
+  console.log("currentItem: ", params.groupName);
 
   const oneDataDelete = (index) => () => {
     const updatedData = data.map((item) => {
@@ -53,13 +57,15 @@ function NoteTextArea() {
     const updatedData = data?.filter((item) => item.groupName !== groupName);
     setData(updatedData);
     localStorage.setItem("data", JSON.stringify(updatedData));
-    dispatch(addData(updatedData))
+    dispatch(addData(updatedData));
     navigate("/");
   };
 
   return (
     <>
-      <div className={style.textAreaContainer}>
+      {
+       (currentItem.groupName === params.groupName) ? (
+        <div className={style.textAreaContainer}>
         <div className={style.headerArea}>
           <div onClick={() => dispatch(openHandler(true))} className={style.barBTN}>
             <FaBars />
@@ -79,7 +85,7 @@ function NoteTextArea() {
           <div className={style.textStoreAreaBoxMain}>
             {currentItem.notes?.map((item, i) => (
               <div key={i} className={style.textStoreAreaBox}>
-                <div>{item.note}</div>
+                <div>{item?.note}</div>
                 <div className={style.dateArea}>
                   {item.date}
                   <span style={{transform: "translateY(1px)"}}>
@@ -96,7 +102,6 @@ function NoteTextArea() {
             ))}
           </div>
         </div>
-
         <div className={style.footerArea}>
           <input onChange={editChangeHandler} type="text" name="edit" value={edit} id="" placeholder="Enter your text here......" />
           <button onClick={saveClickHandler} disabled={edit.length === 0} className={style.sentBox}>
@@ -104,6 +109,10 @@ function NoteTextArea() {
           </button>
         </div>
       </div>
+       ):(
+        <Errorpage/>
+       )
+      }
     </>
   );
 }

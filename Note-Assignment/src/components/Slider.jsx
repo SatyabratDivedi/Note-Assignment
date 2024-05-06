@@ -9,10 +9,7 @@ import {openHandler} from "../reduxStore/slice";
 function Slider({setOperWraper}) {
   const dispatch = useDispatch();
   const recieveIsOpen = useSelector((state) => state.open.isOpen);
-  const recieveDataSlice = useSelector((state) => state.data.data) || [] ;
-
-  const getDataFromLocalStorage = JSON.parse(localStorage.getItem("data")) || [];
-  console.log('getDataFromLocalStorage: ', getDataFromLocalStorage);
+  const recieveDataSlice = useSelector((state) => state.data.data) || [];
 
   const addNoteHandler = (e) => {
     e.stopPropagation();
@@ -35,9 +32,11 @@ function Slider({setOperWraper}) {
             <div onClick={crossClick} className={style.crossBTN}>
               <RxCross1 />
             </div>
-           <div className={style.noteHeaderMain}>
-           <Link to={'/'} className={style.noteHeader}>Pocket Notes</Link>
-           </div>
+            <div className={style.noteHeaderMain}>
+              <Link to={"/"} className={style.noteHeader}>
+                Pocket Notes
+              </Link>
+            </div>
             <div className={style.nameArea}>
               {recieveDataSlice?.map((item, index) => (
                 <NavLink onClick={crossClick} to={`${item.groupName}`} key={index} className={({isActive}) => `${isActive && style.active} ${style.nameBox}`}>

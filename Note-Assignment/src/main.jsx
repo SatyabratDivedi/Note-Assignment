@@ -7,7 +7,6 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import NoteTextArea from "./components/NoteTextArea.jsx";
 import {store} from "./reduxStore/store";
 import {Provider} from "react-redux";
-import NoteArea from "./components/NoteArea.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,11 +14,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
-        element: <NoteArea />,
-      },
-      {
-        path: ":groupName",
+        path: "/:groupName",
         element: <NoteTextArea />,
       },
     ],

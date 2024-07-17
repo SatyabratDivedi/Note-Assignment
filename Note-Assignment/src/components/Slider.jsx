@@ -33,9 +33,9 @@ function Slider({setOperWraper}) {
               <RxCross1 />
             </div>
             <div className={style.noteHeaderMain}>
-              <Link to={"/"} className={style.noteHeader}>
+              <NavLink to={"/"} className={style.noteHeader}>
                 Pocket Notes
-              </Link>
+              </NavLink>
             </div>
             <div className={style.nameArea}>
               {recieveDataSlice?.map((item, index) => (

@@ -14,6 +14,13 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+<<<<<<< HEAD
+=======
+        path: "/",
+        element: <NoteArea />,
+      },
+      {
+>>>>>>> d3b734be311ebe877a4384ceb6ee1949de164201
         path: "/:groupName",
         element: <NoteTextArea />,
       },
